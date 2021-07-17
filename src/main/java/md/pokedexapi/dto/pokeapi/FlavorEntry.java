@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 import java.util.Map;
 
 @Getter
@@ -16,21 +15,17 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PokeApiResponse {
+public class FlavorEntry {
 
-    @JsonProperty("name")
-    private String name;
-    @JsonProperty("flavor_text_entries")
-    private List<FlavorEntry> textEntries;
-    @JsonProperty("is_legendary")
-    private boolean isLegendary;
+    @JsonProperty("flavor_text")
+    private String flavorText;
     @JsonIgnore
-    private String habitat;
+    private String language;
 
-    @JsonProperty("habitat")
-    public void setHabitat(final Map<String, String> habitatMap) {
-        if (habitatMap != null) {
-            this.habitat = habitatMap.get("name");
+    @JsonProperty("language")
+    public void setLanguage(final Map<String, String> languageMap) {
+        if (languageMap != null) {
+            this.language = languageMap.get("name");
         }
     }
 

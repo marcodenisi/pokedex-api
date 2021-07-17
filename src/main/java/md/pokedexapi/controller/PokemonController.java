@@ -2,6 +2,8 @@ package md.pokedexapi.controller;
 
 import lombok.AllArgsConstructor;
 import md.pokedexapi.dto.PokemonInformation;
+import md.pokedexapi.exception.PokeapiClientException;
+import md.pokedexapi.exception.PokeapiServerException;
 import md.pokedexapi.service.PokemonService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,12 +18,12 @@ public class PokemonController {
     private final PokemonService service;
 
     @GetMapping("/{name}")
-    public PokemonInformation getPokemonInformationByName(@PathVariable final String name) {
+    public PokemonInformation getPokemonInformationByName(@PathVariable final String name) throws PokeapiClientException, PokeapiServerException {
         return service.getPokemonInformationByName(name);
     }
 
     @GetMapping("/translated/{name}")
-    public PokemonInformation getTranslatedPokemonInformationByName(@PathVariable final String name) {
+    public PokemonInformation getTranslatedPokemonInformationByName(@PathVariable final String name) throws PokeapiClientException, PokeapiServerException {
         return service.getTranslatedPokemonInformationByName(name);
     }
 
